@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useData } from "../context/Data"; // Context import
-
+import tost from "react-hot-toast";
 const Login = () => {
   const [showpass, setShowpass] = useState(false);
   const { authInformation } = useData(); // Context থেকে authInformation নিলাম
@@ -15,7 +16,7 @@ const Login = () => {
 
     try {
       await singInWithEmailPass(email, password);
-      alert("Login Successful!");
+      tost.success("Login Successful!");
     } catch (err) {
       alert(err.message);
     }
@@ -100,6 +101,7 @@ const Login = () => {
           </p>
         </form>
       </div>
+    
     </div>
   );
 };

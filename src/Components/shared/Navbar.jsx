@@ -1,131 +1,96 @@
-import React, { use, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
-import { IoCloseSharp } from "react-icons/io5";
-import { IoLogoVue } from "react-icons/io5";
-import { IoLogoSlack } from "react-icons/io5";
-import { useLocation } from "react-router-dom";
-
+import { IoCloseSharp, IoLogoVue, IoLogoSlack } from "react-icons/io5";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [isActive, setIsActive] = React.useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState("");
 
   const location = useLocation();
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   useEffect(() => {
     setIsActive(location.pathname || "/");
   }, [location.pathname]);
 
-  const handleLinkClick = (path) => {
-    setIsActive(path);
-  };
+  const navLinks = [
+    { path: "/home", label: "Home" },
+    { path: "/products", label: "Products" },
+    { path: "/blogs", label: "Blogs" },
+    { path: "/contact", label: "Contact" },
+    { path: "/about", label: "About" },
+  ];
+  const navigator = useNavigate();
+  const handleLogoClick = () => {
+    navigator("/home");
+  }
+
   return (
-    <nav className="bg-green-800 text-white p-4 md:py-8 sticky top-0 z-10  ">
-      <div className=" flex justify-between items-center container mx-auto ">
-        <div className="ml-20 hidden md:flex">
-          <IoLogoVue />
-          <IoLogoSlack />
+    <nav className="bg-green-800 text-white p-2 md:py-8 sticky top-0 z-10">
+      <div className="flex justify-between items-center container mx-auto">
+        {/* Logo */}
+        <div className="ml-4 flex gap-2 items-center">
+            <IoLogoSlack/>
+          <span className="text-lg font-semibold cursor-pointer" onClick={handleLogoClick}>
+            MyWebsite
+          </span>
         </div>
 
+        {/* Mobile menu button */}
         <div className="md:hidden">
           <button onClick={toggleMenu}>
-            {isOpen ? <IoCloseSharp /> : <FaBars />}
+            {isOpen ? <IoCloseSharp size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
-        <ul className="hidden md:flex space-x-4  md:space-x-8 ">
-          <li>
-            <Link
-              to="/home"
-              onClick={() => handleLinkClick("/home")}
-              className={`${
-                isActive === "/home" ? "text-blue-500" : "hover:text-blue-300"
-              }`}
-            >
-              Home
+        {/* Desktop Menu */}
+        {location.pathname !== "/login" &&  location.pathname !== "/registration"&&(
+          <div className="hidden md:flex items-center gap-6">
+            <ul className="flex gap-6">
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsActive(link.path)}
+                    className={`${
+                      isActive === link.path
+                        ? "text-blue-500"
+                        : "hover:text-blue-300"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link to="/login">
+              <button className="py-2 px-4 rounded text-white cursor-pointer hover:bg-blue-950 bg-blue-500">
+                Login
+              </button>
             </Link>
-          </li>
-          <li>
-            <Link
-              to="/products"
-              onClick={() => handleLinkClick("/products")}
-              className={`${
-                isActive === "/products"
-                  ? "text-blue-500"
-                  : "hover:text-blue-300"
-              }`}
-            >
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/blogs"
-              onClick={() => handleLinkClick("/blogs")}
-              className={`${
-                isActive === "/blogs" ? "text-blue-500" : "hover:text-blue-300"
-              }`}
-            >
-              Blogs
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              onClick={() => handleLinkClick("/contact")}
-              className={`${
-                isActive === "/contact"
-                  ? "text-blue-500"
-                  : "hover:text-blue-300"
-              }`}
-            >
-              Contact
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/about"
-              onClick={() => handleLinkClick("/about")}
-              className={`${
-                isActive === "/about" ? "text-blue-500" : "hover:text-blue-300"
-              }`}
-            >
-              About
-            </Link>
-          </li>
-        </ul>
-        <Link to="/login" onClick={() => handleLinkClick("/login")}>
-          <button className="mr-30 py-2 px-2 rounded text-white  cursor-pointer hover:bg-blue-950 bg-blue-500 hidden md:flex">
-            Login
-          </button>
-        </Link>
+          </div>
+        )}
+
+        {/* Mobile Menu */}
         <div
-          className={`md:hidden w-full absolute bg-green-600 top-full left-0  ${
-            isOpen ? "block" : "hidden"
-          } p-4  hover:text-shadow-blue-600`}
+          className={`md:hidden w-full absolute bg-green-600 top-full left-0 transition-all duration-300 ease-in-out ${
+            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          }`}
         >
-          <ul className="flex flex-col space-y-4 text-center mt-10  ">
+          <ul className="flex flex-col space-y-4 text-center mt-6 pb-6">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link to={link.path} onClick={toggleMenu}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
             <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/products">Products</Link>
-            </li>
-            <li>
-              <Link to="/blogs">Blogs</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/login">
-                <button>Login</button>
+              <Link to="/login" onClick={toggleMenu}>
+                <button className="py-2 px-4 rounded bg-blue-500 text-white hover:bg-blue-950">
+                  Login
+                </button>
               </Link>
             </li>
           </ul>
