@@ -23,6 +23,16 @@ import {
   logo8,
   logo9,
 } from "../../assets";
+import {
+  image1,
+  image2,
+  image3,
+  image4,
+  image6,
+  image7,
+  image8,
+  image9,
+} from "../../assets/render";
 
 export default function Home() {
   // ডামি ডেটা (ইমেজ হিসেবে Unsplash-এর মিউজিক রিলেটেড ছবি ব্যবহার করা হয়েছে)
@@ -82,47 +92,65 @@ export default function Home() {
       title: "Flawless",
       artist: "Liam Harper",
       time: "2 min ago",
-      img: logo10,
+      img: image7,
     },
     {
       title: "Roman Picaso",
       artist: "Maya Liora, Oh..",
       time: "8 min ago",
-      img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=50&q=80",
+      img: image2,
     },
     {
       title: "Title (Deluxe Edition)",
       artist: "Sophie Lane",
       time: "2 hr ago",
-      img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=50&q=80",
+      img: image3,
     },
     {
       title: "Chill",
       artist: "Noah Bennett",
       time: "6 hr ago",
-      img: "https://images.unsplash.com/photo-1484755560693-a4074577af3a?w=50&q=80",
+      img: image4,
     },
     {
       title: "Feel Alive",
       artist: "Evan Clarke",
       time: "11 hr ago",
-      img: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=50&q=80",
+      img: image8,
     },
     {
       title: "Your Shape",
       artist: "Lucas Grant",
       time: "14 hr ago",
-      img: "https://images.unsplash.com/photo-1446057032654-9d8885b7512a?w=50&q=80",
+      img: image9,
+    },
+    {
+      title: "Bad Vibes",
+      artist: "Aiden Brooks",
+      time: "20 hr ago",
+      img: image1,
+    },
+    {
+      title: "Unhealthy Patterns",
+      artist: "Mason Reed",
+      time: "20 hr ago",
+      img: image6,
+    },
+    {
+      title: "Healthy Patterns",
+      artist: "Ethan Cole",
+      time: "20 hr ago",
+      img: image1,
     },
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen p-6 font-sans relative pb-24">
+    <div className="bg-black text-white min-h-screen p-4 font-sans relative ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* LEFT COLUMN: MAIN CONTENT */}
-        <div className="lg:col-span-3 space-y-6">
+        <div className="lg:col-span-3 space-y-2">
           {/* Header Banner info */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mt-5 ">
+          <div className="flex flex-col md:flex-row justify-between items-start  mt-5 ">
             <div>
               <p className="text-xs md:text-[18px] text-[#D9D9D9">
                 Welcome back
@@ -138,8 +166,8 @@ export default function Home() {
           </div>
 
           {/* Hero Section / Latest Release */}
-          <div className="bg-[#202125] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center relative overflow-hidden max-w-[1038px] h-auto md:h-[435px]">
-            <div className="space-y-4 z-10 max-w-md">
+          <div className="bg-[#202125] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center relative overflow-hidden max-w-[1038px] h-auto md:h-[435px] mt-5">
+            <div className="mb-10 space-y-4">
               <span className=" text-[24px] font-medium text-[#FFFFFF]">
                 Releases
               </span>
@@ -148,7 +176,7 @@ export default function Home() {
                 Bandcamp / Nina.
               </p>
 
-              <div className="pt-4">
+              <div className="pt-10 mt-5">
                 <span className="text-xs text[#949494] uppercase tracking-widest block mb-1 ">
                   LATEST
                 </span>
@@ -181,7 +209,7 @@ export default function Home() {
           </div>
 
           {/* Popular Releases Section */}
-          <div className=" bg-[#202125] rounded-2xl p-5">
+          <div className=" bg-[#202125] rounded-2xl p-5 ">
             <div className="flex justify-between items-center mb-2">
               <h3 className="text-[22px] text-[#FFFFFF]font-semibold ">
                 Popular Releases
@@ -236,83 +264,99 @@ export default function Home() {
         </div>
 
         {/* RIGHT COLUMN: SIDEBAR */}
-        <div className="max-w-[330px]   ">
-          {/* Fans Also Like */}
-          <div className="bg-[#202125] p-4 rounded-2xl">
+        <div className="w-full lg:max-w-[340px] bg-[#1a1b1e] p-5 rounded-2xl flex flex-col justify-between self-start mt-5">
+          {/* Fans Also Like Section */}
+          <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-sm font-semibold">Fans Also Like</h3>
-              <button className="text-xs text-red-500 hover:underline">
+              <h3 className="text-base font-semibold text-white tracking-wide">
+                Fans Also Like
+              </h3>
+              <button className="text-xs text-[#e50914] font-medium hover:underline">
                 See All
               </button>
             </div>
-            <div className="relative rounded-xl overflow-hidden h-52 group">
+
+            {/* Featured Artist Card */}
+            <div className="relative rounded-xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-lg">
               <img
                 src={logo11}
                 alt="James Arthur"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4">
-                <h4 className="text-sm font-bold">James Arthur</h4>
-                <p className="text-[10px] text-gray-400">Artist</p>
+              {/* Dark overlay & Text positioning inside image gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-4">
+                <h4 className="text-base font-bold text-white leading-tight">
+                  James Arthur
+                </h4>
+                <p className="text-xs text-gray-400 font-light mt-0.5">
+                  Artist
+                </p>
               </div>
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 p-1.5 rounded-full text-white cursor-pointer hidden group-hover:block">
+
+              {/* Chevron Hover Action */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white cursor-pointer opacity-0 group-hover:opacity-100 transition duration-300">
                 <FaChevronRight size={10} />
               </div>
             </div>
+
             {/* Pagination dots */}
-            <div className="flex justify-center gap-1.5 mt-3">
-              <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
+            <div className="flex justify-center gap-1.5 mt-4">
+              <span className="w-1.5 h-1.5 bg-[#e50914] rounded-full"></span>
               <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
               <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
               <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
-            </div>
-            <div className="bg-[#1e1f22] p-4 ">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-sm font-semibold">Recent Played</h3>
-                <button className="text-xs text-red-500 hover:underline">
-                  See All
-                </button>
-              </div>
-              <div className="space-y-3 max-h-[350px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-gray-800">
-                {recentPlayed.map((song, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between group hover:bg-[#252629] p-1.5 rounded-lg transition cursor-pointer"
-                  >
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={song.img}
-                        alt={song.title}
-                        className="w-9 h-9 rounded-lg object-cover"
-                      />
-                      <div className="max-w-[120px]">
-                        <h4 className="text-xs font-medium truncate">
-                          {song.title}
-                        </h4>
-                        <p className="text-[10px] text-gray-500 truncate">
-                          {song.artist}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="text-[10px] text-gray-500">
-                      {song.time}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
-          {/* Recent Played */}
+          {/* Recent Played Section */}
+          <div>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-base font-semibold text-white tracking-wide">
+                Recent Played
+              </h3>
+              <button className="text-xs text-[#e50914] font-medium hover:underline">
+                See All
+              </button>
+            </div>
+
+            {/* Dynamic List Container */}
+            <div className="space-y-3.5 max-h-[480px] overflow-y-auto pr-1 scrollbar-none">
+              {recentPlayed.map((song, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between group hover:bg-[#252629]/50 p-1.5 rounded-xl transition-all duration-200 cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={song.img}
+                      alt={song.title}
+                      className="w-11 h-11 rounded-xl object-cover shadow-md"
+                    />
+                    <div className="max-w-[150px]">
+                      <h4 className="text-xs font-semibold text-white truncate group-hover:text-[#e50914] transition">
+                        {song.title}
+                      </h4>
+                      <p className="text-[11px] text-gray-400 truncate mt-0.5">
+                        {song.artist}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-gray-500 font-medium whitespace-nowrap pl-2">
+                    {song.time}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* FLOAT MUSIC PLAYER BAR */}
-      <div className="fixed bottom-25 left-1/2 -translate-x-1/2 w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-full py-2.5 px-4 flex items-center justify-between shadow-2xl ">
+      <div className="fixed bottom-15 left-1/2 -translate-x-1/2 w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-full py-2.5 px-4 flex items-center justify-between shadow-2xl ">
         {/* Track Info */}
         <div className="flex items-center gap-3 min-w-[160px]">
           <img
-            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=80&q=80"
+            src={logo2}
             alt="Current Track"
             className="w-9 h-9 rounded-full object-cover animate-spin-slow"
           />
