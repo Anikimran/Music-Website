@@ -4,12 +4,11 @@ import { FaBars } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { FiBell, FiUser } from "react-icons/fi";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { Modal } from "antd";
 
 function Navbar() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [modalContent, setModalContent] = useState({
     title: "",
@@ -28,17 +27,11 @@ function Navbar() {
       label: "Events",
       modal: true,
       content: {
-        title: "Upcoming Events",
-        description: "Join our exclusive live shows and studio sessions.",
+        title: "Events",
+        description: "2025-06-14 / Brooklyn, NY",
         customBody: (
-          <div className="p-4 bg-[#22222f] rounded-xl border border-gray-800 mt-2">
-            <span className="text-xs font-mono text-gray-500">
-              2026-06-14 / BROOKLYN, NY
-            </span>
-
-            <h3 className="text-lg font-medium text-white mt-1">
-              Live At Trans-Pecos
-            </h3>
+          <div className="text-gray-400 text-sm border-t border-dashed border-gray-700 pt-3 mt-3">
+            Live show announcement coming soon 🎤
           </div>
         ),
       },
@@ -49,13 +42,10 @@ function Navbar() {
       label: "Store",
       modal: true,
       content: {
-        title: "Digital Merchandise Store",
-        description:
-          "Explore our latest vinyl releases and premium sample packs.",
+        title: "Store",
+        description: "Explore vinyl releases & sample packs.",
         customBody: (
-          <p className="text-red-400 text-sm font-semibold mt-2">
-            Store opening next month! 🛍️
-          </p>
+          <p className="text-red-400 text-sm mt-3">Store opening soon 🛍️</p>
         ),
       },
     },
@@ -65,11 +55,10 @@ function Navbar() {
       label: "Services",
       modal: true,
       content: {
-        title: "Our Professional Services",
-        description:
-          "We offer professional mixing, mastering, and audio consultation.",
+        title: "Services",
+        description: "Mixing, mastering & audio consultation.",
         customBody: (
-          <div className="text-sm text-gray-400 border border-dashed border-gray-800 p-3 rounded-lg mt-2">
+          <div className="text-sm text-gray-400 border border-gray-800 p-3 rounded-lg mt-3">
             Email: webzedcontact@gmail.com
           </div>
         ),
@@ -81,35 +70,30 @@ function Navbar() {
       label: "About",
       modal: true,
       content: {
-        title: "About The Studio",
-        description:
-          "A modern workspace dedicated to sonic experimentation and clean UI aesthetics.",
-        customBody: null,
+        title: "About",
+        description: "Modern creative studio experience.",
+        customBody: (
+          <div className="text-gray-400 text-sm border-t border-dashed border-gray-700 pt-3 mt-3">
+            Clean black modern UI design experience.
+          </div>
+        ),
       },
     },
   ];
 
   useEffect(() => {
-    if (!isModalOpen) {
-      setIsActive(location.pathname || "/home");
-    }
-  }, [location.pathname, isModalOpen]);
+    setIsActive(location.pathname || "/home");
+  }, [location.pathname]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const openModal = (linkItem) => {
-    setIsActive(linkItem.path);
-
-    setModalContent(
-      linkItem.content || {
-        title: linkItem.label,
-        description: "Coming soon...",
-      },
-    );
-
+  const openModal = (item) => {
+    setIsActive(item.path);
+    setModalContent(item.content);
     setIsModalOpen(true);
+    setIsOpen(false);
   };
 
   const closeModal = () => {
@@ -119,117 +103,69 @@ function Navbar() {
 
   return (
     <>
-      {/* Modal */}
-      <Modal
-        title={null}
-        open={isModalOpen}
-        onCancel={closeModal}
-        footer={null}
-        centered
-        closable={false}
-        maskClassName="backdrop-blur-md bg-black/60"
-        styles={{
-          content: {
-            backgroundColor: "#1a1a22",
-            color: "#ffffff",
-            borderRadius: "1rem",
-            border: "1px solid #2d2d3d",
-            padding: "24px",
-          },
-        }}
-      >
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-between items-center border-b border-gray-800 pb-3">
-            <h2 className="text-xl font-semibold text-white tracking-wide">
-              {modalContent.title}
-            </h2>
-
-            <button
-              onClick={closeModal}
-              className="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-gray-800 transition"
-            >
-              <IoCloseSharp size={22} />
-            </button>
-          </div>
-
-          <div className="space-y-3 pt-2">
-            <p className="text-gray-300 text-sm leading-relaxed">
-              {modalContent.description}
-            </p>
-
-            {modalContent.customBody && modalContent.customBody}
-          </div>
-        </div>
-      </Modal>
-
-      {/* Navbar */}
-      <nav className="bg-[#0b0b0f] text-white w-full border-b border-gray-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
-          {/* Logo */}
+      {/* ================= NAVBAR ================= */}
+      <nav className="bg-black text-white w-full sticky top-0 z-50 border-b border-[#151515]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+          {/* LOGO */}
           <div
             onClick={() => {
               closeModal();
               navigate("/home");
             }}
-            className="text-red-500 text-2xl font-bold cursor-pointer"
+            className="text-red-500 text-xl md:text-2xl font-bold cursor-pointer"
           >
             LOGO
           </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-4">
-            <ul className="flex items-center gap-3 px-3 py-2">
-              {navLinks.map((link) => {
-                const isLinkActive = isActive === link.path;
+          {/* ================= DESKTOP MENU ================= */}
+          <div className="hidden md:flex items-center gap-3">
+            {navLinks.map((item) => {
+              const active = isActive === item.path;
 
-                return (
-                  <li key={link.path}>
-                    {link.modal ? (
-                      <button
-                        onClick={() => openModal(link)}
-                        className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
-                          isLinkActive
-                            ? "bg-red-500 text-white"
-                            : "bg-[#1a1a22] text-gray-300 hover:bg-red-500 hover:text-white"
-                        }`}
-                      >
-                        {link.label}
-                      </button>
-                    ) : (
-                      <Link
-                        to={link.path}
-                        onClick={() => setIsModalOpen(false)}
-                        className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
-                          isLinkActive
-                            ? "bg-red-500 text-white"
-                            : "bg-[#1a1a22] text-gray-300 hover:bg-red-500 hover:text-white"
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+              return item.modal ? (
+                <button
+                  key={item.path}
+                  onClick={() => openModal(item)}
+                  className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
+                    active
+                      ? "bg-red-500 text-white"
+                      : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
+                    active
+                      ? "bg-red-500 text-white"
+                      : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Right Icons */}
+          {/* ================= DESKTOP ICONS ================= */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center hover:bg-red-500 transition">
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition">
               <FiBell size={18} />
             </button>
 
-            <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center hover:bg-red-500 transition">
-              <IoIosArrowDropdown size={24} />
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition">
+              <IoIosArrowDropdown size={20} />
             </button>
 
-            <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center hover:bg-red-500 transition">
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition">
               <FiUser size={18} />
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* ================= MOBILE BUTTON ================= */}
           <div className="md:hidden">
             <button onClick={toggleMenu}>
               {isOpen ? <IoCloseSharp size={28} /> : <FaBars size={22} />}
@@ -237,69 +173,102 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* ================= MOBILE MENU ================= */}
         <div
-          className={`md:hidden bg-[#111116] overflow-hidden transition-all duration-300 ${
+          className={`md:hidden overflow-hidden transition-all duration-300 bg-[#0f0f0f] ${
             isOpen ? "max-h-screen py-5" : "max-h-0"
           }`}
         >
-          <ul className="flex flex-col items-center gap-4">
-            {navLinks.map((link) => {
-              const isLinkActive = isActive === link.path;
+          <div className="flex flex-col items-start px-4 gap-3 w-[85%]">
+            {navLinks.map((item) => {
+              const active = isActive === item.path;
 
-              return (
-                <li key={link.path}>
-                  {link.modal ? (
-                    <button
-                      onClick={() => {
-                        openModal(link);
-                        toggleMenu();
-                      }}
-                      className={`px-5 py-2 rounded-full transition-all duration-300 ${
-                        isLinkActive
-                          ? "bg-red-500 text-white"
-                          : "bg-[#1a1a22] text-gray-300"
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <Link
-                      to={link.path}
-                      onClick={() => {
-                        setIsActive(link.path);
-                        toggleMenu();
-                      }}
-                      className={`px-5 py-2 rounded-full transition-all duration-300 ${
-                        isLinkActive
-                          ? "bg-red-500 text-white"
-                          : "bg-[#1a1a22] text-gray-300"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
+              return item.modal ? (
+                <button
+                  key={item.path}
+                  onClick={() => openModal(item)}
+                  className={`w-[220px] text-left px-4 py-2.5 rounded-xl text-sm transition ${
+                    active
+                      ? "bg-red-500 text-white"
+                      : "bg-[#1a1a1a] text-gray-300"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => {
+                    setIsActive(item.path);
+                    setIsOpen(false);
+                  }}
+                  className={`w-[220px] text-left px-4 py-2.5 rounded-xl text-sm transition ${
+                    active
+                      ? "bg-red-500 text-white"
+                      : "bg-[#1a1a1a] text-gray-300"
+                  }`}
+                >
+                  {item.label}
+                </Link>
               );
             })}
 
-            {/* Mobile Icons */}
-            <div className="flex gap-3 mt-4">
-              <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center">
+            {/* MOBILE ICONS */}
+            <div className="flex items-center gap-3 pt-3">
+              <button className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center">
                 <FiBell size={18} />
               </button>
 
-              <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center">
-                <IoIosArrowDropdown size={22} />
+              <button className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center">
+                <IoIosArrowDropdown size={20} />
               </button>
 
-              <button className="w-10 h-10 rounded-full bg-[#16161d] flex items-center justify-center">
+              <button className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center">
                 <FiUser size={18} />
               </button>
             </div>
-          </ul>
+          </div>
         </div>
       </nav>
+
+      {/* ================= MODAL ================= */}
+      {/* ================= MODAL ================= */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[45] flex items-start justify-center px-4 pt-15 md:pt-24">
+          {/* BACKDROP */}
+          <div
+            onClick={closeModal}
+            className="absolute inset-0 bg-black/70 backdrop-blur-[0.1px]"
+          ></div>
+
+          {/* MODAL BOX */}
+          <div className="relative z-10 w-full max-w-md bg-black border border-[#222] rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+            {/* HEADER */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[#222]">
+              <h2 className="text-white text-lg md:text-xl font-semibold">
+                {modalContent.title}
+              </h2>
+
+              <button
+                onClick={closeModal}
+                className="text-gray-400 hover:text-white transition"
+              >
+                <IoCloseSharp size={24} />
+              </button>
+            </div>
+
+            {/* BODY */}
+            <div className="p-5 bg-black">
+              <p className="text-gray-300 text-sm leading-7">
+                {modalContent.description}
+              </p>
+
+              {modalContent.customBody}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
