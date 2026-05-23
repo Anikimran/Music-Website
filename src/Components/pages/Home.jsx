@@ -33,6 +33,7 @@ import {
   image8,
   image9,
 } from "../../assets/render";
+import { AiOutlineBackward, AiOutlineForward } from "react-icons/ai";
 
 export default function Home() {
   // ডামি ডেটা (ইমেজ হিসেবে Unsplash-এর মিউজিক রিলেটেড ছবি ব্যবহার করা হয়েছে)
@@ -172,8 +173,8 @@ export default function Home() {
                 Releases
               </span>
               <p className="text-[14px] font-medium text-[#949494] mt-1">
-                Albums, EPs, and one-offs. Stream below, or jump out <br /> to
-                Bandcamp / Nina.
+                Albums, EPs, and one-offs. Stream below, or jump out{" "}
+                <br className="hidden md:flex" /> to Bandcamp / Nina.
               </p>
 
               <div className="pt-10 mt-5">
@@ -264,7 +265,7 @@ export default function Home() {
         </div>
 
         {/* RIGHT COLUMN: SIDEBAR */}
-        <div className="w-full lg:max-w-[340px] bg-[#1a1b1e] p-5 rounded-2xl flex flex-col justify-between self-start mt-5">
+        <div className="w-full lg:max-w-[340px]  bg-[#1a1b1e] p-5 rounded-2xl flex flex-col justify-between self-start mt-5">
           {/* Fans Also Like Section */}
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
@@ -369,13 +370,13 @@ export default function Home() {
         {/* Controls & Progress Bar */}
         <div className="flex items-center gap-4 flex-1 max-w-md mx-4">
           <button className="text-gray-400 hover:text-white transition">
-            <FaChevronLeft size={12} />
+            <AiOutlineBackward size={18} color="white" />
           </button>
           <button className="bg-red-600 text-white p-2.5 rounded-full hover:bg-red-700 transition shadow-lg">
             <FaPlay size={10} />
           </button>
           <button className="text-gray-400 hover:text-white transition">
-            <FaChevronRight size={12} />
+            <AiOutlineForward size={18} color="white" />
           </button>
 
           {/* Progress Timeline */}

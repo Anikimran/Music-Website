@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
-import { FiBell, FiUser } from "react-icons/fi";
+import { FiBell } from "react-icons/fi";
 import { IoIosArrowDropdown } from "react-icons/io";
+import { logo12 } from "../../assets";
+import { ImUser } from "react-icons/im";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,7 +78,7 @@ function Navbar() {
               className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 isActive === "/home"
                   ? "bg-red-500 text-white"
-                  : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  : "bg-[#151515] text-[#8C8C8C] hover:bg-red-500 hover:text-white hover:cursor-pointer"
               }`}
             >
               Releases
@@ -87,7 +89,7 @@ function Navbar() {
               className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 isActive === "/events"
                   ? "bg-red-500 text-white"
-                  : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  : "bg-[#151515] hover:cursor-pointer text-[#8C8C8C] hover:bg-red-500 hover:text-white"
               }`}
             >
               Events
@@ -98,7 +100,7 @@ function Navbar() {
               className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 isActive === "/store"
                   ? "bg-red-500 text-white"
-                  : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  : "bg-[#151515] hover:cursor-pointer text-[#8C8C8C] hover:bg-red-500 hover:text-white"
               }`}
             >
               Store
@@ -109,7 +111,7 @@ function Navbar() {
               className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 isActive === "/services"
                   ? "bg-red-500 text-white"
-                  : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  : "bg-[#151515] hover:cursor-pointer text-[#8C8C8C] hover:bg-red-500 hover:text-white"
               }`}
             >
               Services
@@ -120,7 +122,7 @@ function Navbar() {
               className={`px-5 py-2 rounded-full text-sm transition-all duration-300 ${
                 isActive === "/about"
                   ? "bg-red-500 text-white"
-                  : "bg-[#151515] text-gray-300 hover:bg-red-500 hover:text-white"
+                  : "bg-[#151515] hover:cursor-pointer text-[#8C8C8C] hover:bg-red-500 hover:text-white"
               }`}
             >
               About
@@ -136,7 +138,7 @@ function Navbar() {
               <IoIosArrowDropdown size={20} />
             </button>
             <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white">
-              <FiUser size={18} />
+              <ImUser size={18} color="white" />
             </button>
           </div>
 
@@ -212,7 +214,7 @@ function Navbar() {
               </h2>
               <button
                 onClick={closeModal}
-                className="text-gray-400 hover:text-white transition p-1 bg-[#26262b] rounded-full"
+                className="text-gray-400 hover:text-white "
               >
                 <IoCloseSharp size={20} />
               </button>
@@ -261,17 +263,22 @@ function Navbar() {
                       onClick={() =>
                         setSelectedProduct("Modded iPod Classic - 1TB")
                       }
-                      className={`flex gap-4 p-3 rounded-xl border cursor-pointer transition bg-[#1c1c21] ${selectedProduct === "Modded iPod Classic - 1TB" ? "border-red-500" : "border-[#2a2a30]"}`}
+                      className={`flex gap-4 p-3 rounded-xl border cursor-pointer transition bg-[#151618] ${selectedProduct === "Modded iPod Classic - 1TB" ? "border-red-500" : "border-[#2a2a30]"}`}
                     >
-                      <div className="w-16 h-16 bg-[#26262b] rounded-lg flex items-center justify-center shrink-0">
-                        <span className="text-xs text-gray-500">iPod 1TB</span>
+                      <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0">
+                        <img
+                          src={logo12}
+                          alt="image"
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
                       </div>
                       <div>
                         <h4 className="text-sm font-medium">
                           Modded iPod Classic - 1TB
                         </h4>
                         <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
-                          Refurbished 7th-gen, SSD, upgraded battery...
+                          Refurbished 7th-gen, 1TB SSD, replaced <br /> battery,
+                          custom click wheel.
                         </p>
                         <p className="text-sm font-semibold text-white mt-1">
                           $520.00
@@ -283,12 +290,14 @@ function Navbar() {
                       onClick={() =>
                         setSelectedProduct("Modded iPod Classic - 0.5TB")
                       }
-                      className={`flex gap-4 p-3 rounded-xl border cursor-pointer transition bg-[#1c1c21] ${selectedProduct === "Modded iPod Classic - 0.5TB" ? "border-red-500" : "border-[#2a2a30]"}`}
+                      className={`flex gap-4 p-3 rounded-xl border cursor-pointer transition bg-[#151618] ${selectedProduct === "Modded iPod Classic - 0.5TB" ? "border-red-500" : "border-[#2a2a30]"}`}
                     >
-                      <div className="w-16 h-16 bg-[#26262b] rounded-lg flex items-center justify-center shrink-0">
-                        <span className="text-xs text-gray-500">
-                          iPod 0.5TB
-                        </span>
+                      <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0">
+                        <img
+                          src={logo12}
+                          alt="image"
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
                       </div>
                       <div>
                         <h4 className="text-sm font-medium">
@@ -357,7 +366,7 @@ function Navbar() {
                       </div>
                       <button
                         type="submit"
-                        className="bg-red-500 text-white font-semibold text-xs tracking-wider uppercase py-2.5 rounded-full flex items-center justify-center gap-1 hover:bg-red-600 transition mt-2"
+                        className="bg-red-500 text-white font-semibold w-[189px]  py-3 text-xs tracking-wider uppercase rounded-full flex items-center justify-center gap-1 hover:bg-red-600 transition mt-2"
                       >
                         <span>✦</span> Send Inquiry
                       </button>

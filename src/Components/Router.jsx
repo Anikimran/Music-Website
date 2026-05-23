@@ -2,7 +2,6 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./pages/Home";
-import Store from "./pages/Store";
 import Events from "./pages/Events";
 import Services from "./pages/Services";
 import About from "./pages/About";
@@ -13,12 +12,12 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "home",
+        index: true, // 👈 এটা দিলে "/" এ Home দেখাবে
         element: <Home />,
       },
       {
-        path: "store",
-        element: <Store />,
+        path: "home",
+        element: <Home />,
       },
       {
         path: "events",
@@ -26,7 +25,6 @@ const Router = createBrowserRouter([
       },
       {
         path: "services",
-
         element: <Services />,
       },
       {

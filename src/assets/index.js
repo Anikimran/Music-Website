@@ -9,6 +9,7 @@ import logo8 from "../assets/image/Cover1.png";
 import logo9 from "../assets/image/com.png";
 import logo10 from "../assets/image/song.png";
 import logo11 from "../assets/image/Image (2).png";
+import logo12 from "../assets/image/image 32.png";
 
 export {
   logo,
@@ -22,4 +23,5 @@ export {
   logo9,
   logo10,
   logo11,
+  logo12,
 };
