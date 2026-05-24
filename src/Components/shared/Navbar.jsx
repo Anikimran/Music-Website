@@ -6,6 +6,7 @@ import { FiBell } from "react-icons/fi";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { logo12 } from "../../assets";
 import { ImUser } from "react-icons/im";
+import { BsCursorFill } from "react-icons/bs";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -221,17 +222,17 @@ function Navbar() {
             </div>
 
             {/* MODAL BODY CONTROLLER */}
-            <div className="p-6 text-white max-h-[80vh] overflow-y-auto">
+            <div className="p-6 text-white max-h-[80vh] ">
               {/* 1. EVENTS MODAL */}
               {activeTab === "events" && (
                 <div className="flex flex-col gap-4">
                   <div className="bg-[#151618] border border-[#2a2a30] rounded-xl p-5 hover:border-red-500/50 transition">
                     <div className="border-b border-dashed border-[#454545] py-2">
-                      <span className="text-xs text-gray-500 font-mono tracking-wider">
+                      <span className="text-[14px] text-white/70 tracking-[0.06em]">
                         2025-06-14 / BROOKLYN, NY
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold mt-1 text-white">
+                    <h3 className="md:text-[18px] text-[14px] font-semibold mt-1 text-white">
                       Live at Trans-Pecos
                     </h3>
                     <p className="text-sm text-gray-400 mt-1">
@@ -240,11 +241,11 @@ function Navbar() {
                   </div>
                   <div className="bg-[#151618] border border-[#2a2a30] rounded-xl p-5 hover:border-red-500/50 transition">
                     <div className="border-b border-dashed border-[#454545] py-2">
-                      <span className="text-xs text-gray-500 font-mono tracking-wider">
+                      <span className="text-[14px] text-white/70 tracking-[0.06em]">
                         2025-07-19 / BROOKLYN, NY
                       </span>
                     </div>
-                    <h3 className="text-lg font-semibold mt-1 text-white">
+                    <h3 className="text-[14px] md:text-[18px] mt-1 text-white">
                       Studio Showcase
                     </h3>
                     <p className="text-sm text-gray-400 mt-1">
@@ -261,26 +262,34 @@ function Navbar() {
                   <div className="md:col-span-5 flex flex-col gap-3">
                     <div
                       onClick={() =>
-                        setSelectedProduct("Modded iPod Classic - 1TB")
+                        setSelectedProduct("Modded iPod Classic-1TB")
                       }
-                      className={`flex gap-4 p-3 rounded-xl border cursor-pointer transition bg-[#151618] ${selectedProduct === "Modded iPod Classic - 1TB" ? "border-red-500" : "border-[#2a2a30]"}`}
+                      className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition bg-[#151618] ${
+                        selectedProduct === "Modded iPod Classic - 1TB"
+                          ? "border-red-500"
+                          : "border-[#2a2a30]"
+                      }`}
                     >
-                      <div className="w-20 h-20 rounded-full flex items-center justify-center shrink-0">
+                      <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden rounded-2xl">
                         <img
                           src={logo12}
                           alt="image"
-                          className="w-full h-full object-cover rounded-2xl"
+                          priority={true}
+                          className="w-full h-full object-cover"
                         />
                       </div>
-                      <div>
-                        <h4 className="text-sm font-medium">
+
+                      <div className="min-w-0">
+                        <h4 className="text-sm md:text-[16px] font-medium">
                           Modded iPod Classic - 1TB
                         </h4>
-                        <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
-                          Refurbished 7th-gen, 1TB SSD, replaced <br /> battery,
-                          custom click wheel.
+
+                        <p className="text-xs text-gray-400 mt-0.5 line-clamp-2">
+                          Refurbished 7th-gen, 1TB SSD, replaced battery, custom
+                          click wheel.
                         </p>
-                        <p className="text-sm font-semibold text-white mt-1">
+
+                        <p className="text-base md:text-[18px] font-semibold text-white mt-1">
                           $520.00
                         </p>
                       </div>
@@ -296,17 +305,18 @@ function Navbar() {
                         <img
                           src={logo12}
                           alt="image"
+                          priority={true}
                           className="w-full h-full object-cover rounded-2xl"
                         />
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium">
-                          Modded iPod Classic - 0.5TB
+                        <h4 className="text-[16px] font-medium ">
+                          Modded iPod Classic-0.5TB
                         </h4>
                         <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
                           Refurbished 7th-gen, SSD, upgraded battery...
                         </p>
-                        <p className="text-sm font-semibold text-white mt-1">
+                        <p className="text-[18px] font-semibold text-white mt-1">
                           $380.00
                         </p>
                       </div>
@@ -314,7 +324,7 @@ function Navbar() {
                   </div>
 
                   <div className="md:col-span-7 bg-[#1c1c21] border border-[#2a2a30] p-5 rounded-xl">
-                    <h3 className="text-sm font-medium text-gray-300 mb-4">
+                    <h3 className="text-[20px] font-medium text-[#FFFFFF] mb-4 tracking-[0.02em]">
                       Purchase Inquiry
                     </h3>
                     <form
@@ -368,7 +378,10 @@ function Navbar() {
                         type="submit"
                         className="bg-red-500 text-white font-semibold w-[189px]  py-3 text-xs tracking-wider uppercase rounded-full flex items-center justify-center gap-1 hover:bg-red-600 transition mt-2"
                       >
-                        <span>✦</span> Send Inquiry
+                        <span>
+                          <BsCursorFill size={18} />
+                        </span>{" "}
+                        Send Inquiry
                       </button>
                     </form>
                   </div>
@@ -383,10 +396,10 @@ function Navbar() {
                       <button
                         key={service}
                         onClick={() => setSelectedService(service)}
-                        className={`w-full text-left px-4 py-3 rounded-xl text-sm transition-all border ${
+                        className={`w-full text-left px-4 py-3 rounded-xl text-sm transition-all border bg-[#FFFFFF0F] ${
                           selectedService === service
-                            ? "bg-[#1c1c21] border-red-500 text-white font-medium"
-                            : "bg-[#1c1c21]/40 border-transparent text-gray-400 hover:bg-[#1c1c21]"
+                            ? "bg-[#1c1c21] border-red-500 text-[#FFFFFF] font-medium"
+                            : "bg-[#1c1c21]/40 border-transparent text-[#FFFFFF] "
                         }`}
                       >
                         {service}
@@ -395,9 +408,9 @@ function Navbar() {
                   </div>
 
                   <div className="md:col-span-7 bg-[#1c1c21] border border-[#2a2a30] p-5 rounded-xl">
-                    <h3 className="text-sm font-medium text-gray-300 mb-4">
+                    <h3 className="text-[15px] font-medium text-[#BFBFBF] mb-4">
                       Purchase Inquiry:{" "}
-                      <span className="text-white font-semibold">
+                      <span className="text-[16px] text-[#FFFFFF]">
                         {selectedService}
                       </span>
                     </h3>
@@ -406,40 +419,43 @@ function Navbar() {
                       onSubmit={(e) => e.preventDefault()}
                     >
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">
+                        <label className="text-xs text-[#FFFFFF] block mb-1">
                           Name
                         </label>
                         <input
                           type="text"
                           placeholder="Enter your name"
-                          className="w-full bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-gray-600 focus:outline-none focus:border-red-500"
+                          className="w-full text-[#FFFFFF] bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-[#FFFFFF] focus:outline-none focus:border-red-500 resize-none mt-1"
                         />
                       </div>
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">
+                        <label className="text-xs text-[#FFFFFF] block mb-1">
                           Email
                         </label>
                         <input
                           type="email"
                           placeholder="Enter your email address"
-                          className="w-full bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-gray-600 focus:outline-none focus:border-red-500"
+                          className="w-full text-[#FFFFFF] bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-[#FFFFFF] focus:outline-none focus:border-red-500 resize-none mt-1"
                         />
                       </div>
                       <div>
-                        <label className="text-xs text-gray-400 block mb-1">
+                        <label className="text-xs text-[#FFFFFF]block mb-1">
                           What are you working on?
                         </label>
                         <textarea
                           rows="3"
                           placeholder="Enter your message"
-                          className="w-full bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-gray-600 focus:outline-none focus:border-red-500 resize-none"
+                          className="w-full text-[#FFFFFF] bg-[#18181c] border border-[#2a2a30] rounded-lg px-3 py-2 text-sm placeholder-[#FFFFFF] focus:outline-none focus:border-red-500 resize-none mt-1"
                         ></textarea>
                       </div>
                       <button
                         type="submit"
-                        className="bg-red-500 text-white font-semibold text-xs tracking-wider uppercase py-2.5 rounded-full flex items-center justify-center gap-1 hover:bg-red-600 transition mt-2"
+                        className="bg-red-500 text-white font-semibold w-[189px]  py-3 text-xs tracking-wider uppercase rounded-full flex items-center justify-center gap-1 hover:bg-red-600 transition mt-2"
                       >
-                        <span>✦</span> Send Inquiry
+                        <span>
+                          <BsCursorFill size={18} />
+                        </span>{" "}
+                        Send Inquiry
                       </button>
                     </form>
                   </div>
@@ -453,24 +469,24 @@ function Navbar() {
                     Crucial Tone is a small studio devoted to recording, mixing,
                     mastering, and the music that comes out of all three.
                   </p>
-                  <p className="text-gray-400 text-xs leading-relaxed max-w-xl">
-                    We work on records, live sound, lessons, and hand-customized
-                    modded iPod Classics. Shared early 90s equipment and rare
-                    instinct. This site is intentionally small and private, a
+                  <p className="text-[#8C8C8C] text-[16px] leading-relaxed max-w-[1038px]">
+                    We work on records, live sound, lessons, and the occasional
+                    modded iPod Classic. Equal parts old equipment and new
+                    instinct. This site is intentionally small and private a
                     place for people we already know, and people we'd like to.
                   </p>
 
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-[#26262b] text-left">
-                    <div>
-                      <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-mono">
+                  <div className="grid grid-cols-3 gap-6 items-center justify-between pt-6 border-t border-[#26262b] ">
+                    <div className="pl-5">
+                      <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Based
                       </span>
-                      <span className="text-xs font-medium text-gray-300 mt-1 block">
-                        SOMEWHERE WITH GOOD ROOMS
+                      <span className="text-xs font-medium text-gray-300 mt-1 block ">
+                        SOMEWHERE WITH GOOD
                       </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-mono">
+                      <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Email
                       </span>
                       <span className="text-xs font-medium text-gray-300 mt-1 block break-all">
@@ -478,7 +494,7 @@ function Navbar() {
                       </span>
                     </div>
                     <div>
-                      <span className="block text-[10px] uppercase tracking-wider text-gray-500 font-mono">
+                      <span className=" block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Phone
                       </span>
                       <span className="text-xs font-medium text-gray-300 mt-1 block">

@@ -34,8 +34,42 @@ import {
   image9,
 } from "../../assets/render";
 import { AiOutlineBackward, AiOutlineForward } from "react-icons/ai";
+import { useEffect, useState } from "react";
+
+// Slider Images
+const artists = [
+  {
+    name: "James Arthur",
+    role: "Artist",
+    img: logo11,
+  },
+  {
+    name: "Selena Gomez",
+    role: "Singer",
+    img: logo10,
+  },
+  {
+    name: "Ariana Grande",
+    role: "Artist",
+    img: logo9,
+  },
+  {
+    name: "Charlie Puth",
+    role: "Singer",
+    img: logo8,
+  },
+];
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  // Auto Slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === artists.length - 1 ? 0 : prev + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
   // ডামি ডেটা (ইমেজ হিসেবে Unsplash-এর মিউজিক রিলেটেড ছবি ব্যবহার করা হয়েছে)
   const popularReleases = [
     {
@@ -147,54 +181,53 @@ export default function Home() {
 
   return (
     <div className="bg-black text-white min-h-screen p-4 font-sans relative ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* LEFT COLUMN: MAIN CONTENT */}
         <div className="lg:col-span-3 space-y-2">
           {/* Header Banner info */}
-          <div className="flex flex-col md:flex-row justify-between items-start  mt-5 ">
+          <div className="flex flex-col md:flex-row justify-between items-start  mt-2 pl-6">
             <div>
-              <p className="text-xs md:text-[18px] text-[#D9D9D9">
+              <p className="text-[16px] md:text-[20px] text-[#D9D9D9 tracking-[-0.02em] ">
                 Welcome back
               </p>
-              <h1 className="text-xl md:text-3xl text-[#FFFFFF] font-semibold tracking-wide">
+              <h1 className="text-xl md:text-3xl text-[#FFFFFF] font-semibold tracking-[-0.03em]">
                 A small studio, an open door.
               </h1>
             </div>
-            <p className="text-xs text-gray-500 mt-2 md:mt-0 ">
+            <p className="text-[14px] text-[#BFBFBF] mt-2 md:mt-5 tracking-[-0.01em]">
               Click any block to open. Music keeps <br /> playing in the
               background.
             </p>
           </div>
 
           {/* Hero Section / Latest Release */}
-          <div className="bg-[#202125] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center relative overflow-hidden max-w-[1038px] h-auto md:h-[435px] mt-5">
-            <div className="mb-10 space-y-4">
-              <span className=" text-[24px] font-medium text-[#FFFFFF]">
-                Releases
-              </span>
+          <div className="bg-[#202125] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center relative overflow-hidden max-w-[1038px] h-auto md:h-[400px] mt-5">
+            <div className=" space-y-4">
+              <span className=" text-[24px]  text-[#FFFFFF]">Releases</span>
               <p className="text-[14px] font-medium text-[#949494] mt-1">
                 Albums, EPs, and one-offs. Stream below, or jump out{" "}
                 <br className="hidden md:flex" /> to Bandcamp / Nina.
               </p>
 
               <div className="pt-10 mt-5">
-                <span className="text-xs text[#949494] uppercase tracking-widest block mb-1 ">
+                <span className="text-[16px] text[#949494] uppercase tracking-[4px] block mb-1 ">
                   LATEST
                 </span>
                 <h2 className=" text-2xl md:text-4xl font-semibold tracking-tight">
                   Transmission 01
                 </h2>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-[16px] text-[#949494] mt-5">
                   🎧 82,736,050 monthly listeners
                 </p>
               </div>
 
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-3 pt-6">
                 <button className="bg-[#e50914] hover:bg-red-700 text-white text-xs font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
-                  <FaPlay size={10} /> PLAY FIRST TRACK
+                  <FaPlay size={10} />
+                  <p className="font-semibold text-[14px]">PLAY FIRST TRACK</p>
                 </button>
-                <button className="bg-[#2a2b2e] hover:bg-gray-700 text-white text-xs font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
-                  <FaRegBookmark size={12} /> SAVED
+                <button className="bg-[#3E3F45] hover:bg-gray-700 text-[#FCFCFC] text-[14px] font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
+                  <FaRegBookmark size={18} className="bg-white/50" /> SAVED
                 </button>
               </div>
             </div>
@@ -212,10 +245,10 @@ export default function Home() {
           {/* Popular Releases Section */}
           <div className=" bg-[#202125] rounded-2xl p-5 ">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-[22px] text-[#FFFFFF]font-semibold ">
+              <h3 className="text-[22px] text-[#FFFFFF]font-semibold mb-3">
                 Popular Releases
               </h3>
-              <button className="text-xs text-red-500 hover:underline">
+              <button className="text-[16px] text-[#FB0D1D] hover:cursor-pointer">
                 See All
               </button>
             </div>
@@ -241,10 +274,12 @@ export default function Home() {
           </div>
 
           {/* Popular Song Header (Bottom Area) */}
-          <div className="mb-5 bg-[#202125] p-5 rounded-2xl">
+          <div className="mb-5 bg-[#202125] md:p-5 rounded-2xl p-2 ">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-base font-semibold">Popular Song</h3>
-              <button className="text-xs text-red-500 hover:underline">
+              <h3 className=" text-[16px] md:text-[20px] font-semibold">
+                Popular Song
+              </h3>
+              <button className="text-[12px] md:text-[16px] text-[#FB0D1D] hover:cursor-pointer">
                 See All
               </button>
             </div>
@@ -265,62 +300,85 @@ export default function Home() {
         </div>
 
         {/* RIGHT COLUMN: SIDEBAR */}
-        <div className="w-full lg:max-w-[340px]  bg-[#1a1b1e] p-5 rounded-2xl flex flex-col justify-between self-start mt-5">
-          {/* Fans Also Like Section */}
+        <div className="w-full lg:max-w-[340px] bg-[#1a1b1e] p-5 rounded-2xl flex flex-col justify-between self-start ">
+          {/* Fans Also Like */}
           <div className="mb-6">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-base font-semibold text-white tracking-wide">
+              <h3 className=" text-[16px] md:text-[20px] font-semibold text-[#FFFFFF] tracking-[-0.01em]">
                 Fans Also Like
               </h3>
-              <button className="text-xs text-[#e50914] font-medium hover:underline">
+
+              <button className="text-[12px] md:text-[16px] text-[#e50914] font-medium hover:cursor-pointer">
                 See All
               </button>
             </div>
 
-            {/* Featured Artist Card */}
-            <div className="relative rounded-xl overflow-hidden aspect-[4/3] group cursor-pointer shadow-lg">
-              <img
-                src={logo11}
-                alt="James Arthur"
-                className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-              />
-              {/* Dark overlay & Text positioning inside image gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-4">
-                <h4 className="text-base font-bold text-white leading-tight">
-                  James Arthur
-                </h4>
-                <p className="text-xs text-gray-400 font-light mt-0.5">
-                  Artist
-                </p>
-              </div>
+            {/* Slider */}
+            <div className="relative overflow-hidden rounded-xl">
+              <div
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentSlide * 100}%)`,
+                }}
+              >
+                {artists.map((artist, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full relative aspect-[4/3] group cursor-pointer shadow-lg"
+                  >
+                    <img
+                      src={artist.img}
+                      alt={artist.name}
+                      className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                    />
 
-              {/* Chevron Hover Action */}
-              <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white cursor-pointer opacity-0 group-hover:opacity-100 transition duration-300">
-                <FaChevronRight size={10} />
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-4">
+                      <h4 className="text-base font-bold text-white leading-tight">
+                        {artist.name}
+                      </h4>
+
+                      <p className="text-xs text-gray-400 font-light mt-0.5">
+                        {artist.role}
+                      </p>
+                    </div>
+
+                    {/* Hover Icon */}
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full text-white cursor-pointer opacity-0 group-hover:opacity-100 transition duration-300">
+                      <FaChevronRight size={10} />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Pagination dots */}
+            {/* Dots */}
             <div className="flex justify-center gap-1.5 mt-4">
-              <span className="w-1.5 h-1.5 bg-[#e50914] rounded-full"></span>
-              <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
-              <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
-              <span className="w-1.5 h-1.5 bg-gray-600 rounded-full"></span>
+              {artists.map((_, index) => (
+                <span
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-1.5 h-1.5 rounded-full cursor-pointer transition ${
+                    currentSlide === index ? "bg-[#e50914] w-4" : "bg-gray-600"
+                  }`}
+                ></span>
+              ))}
             </div>
           </div>
 
-          {/* Recent Played Section */}
+          {/* Recent Played */}
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-base font-semibold text-white tracking-wide">
+              <h3 className=" text-[18px] md:text-[20px] font-semibold text-[#FFFFFF] tracking-[-0.01em]">
                 Recent Played
               </h3>
-              <button className="text-xs text-[#e50914] font-medium hover:underline">
+
+              <button className="text-[16px] text-[#e50914] font-medium hover:cursor-pointer">
                 See All
               </button>
             </div>
 
-            {/* Dynamic List Container */}
+            {/* Scroll Area */}
             <div className="space-y-3.5 max-h-[480px] overflow-y-auto pr-1 scrollbar-none">
               {recentPlayed.map((song, index) => (
                 <div
@@ -331,18 +389,21 @@ export default function Home() {
                     <img
                       src={song.img}
                       alt={song.title}
-                      className="w-11 h-11 rounded-xl object-cover shadow-md"
+                      className="w-12 h-12 rounded-xl object-cover shadow-md"
                     />
+
                     <div className="max-w-[150px]">
-                      <h4 className="text-xs font-semibold text-white truncate group-hover:text-[#e50914] transition">
+                      <h4 className="text-[14px] font-bold text-white truncate  transition">
                         {song.title}
                       </h4>
-                      <p className="text-[11px] text-gray-400 truncate mt-0.5">
+
+                      <p className="text-[12px] text-[#949494] truncate mt-0.5">
                         {song.artist}
                       </p>
                     </div>
                   </div>
-                  <span className="text-[10px] text-gray-500 font-medium whitespace-nowrap pl-2">
+
+                  <span className="text-[12px] text-[#8C8C8C] font-medium whitespace-nowrap pl-2">
                     {song.time}
                   </span>
                 </div>
@@ -353,7 +414,7 @@ export default function Home() {
       </div>
 
       {/* FLOAT MUSIC PLAYER BAR */}
-      <div className="fixed bottom-15 left-1/2 -translate-x-1/2 w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-full py-2.5 px-4 flex items-center justify-between shadow-2xl ">
+      <div className="absolute z-40 bottom-4 md:bottom-15 left-1/2 -translate-x-1/2 w-[95%] md:w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-2xl md:rounded-full py-3 md:py-2.5 px-3 md:px-4 flex flex-col md:flex-row items-center gap-4 md:gap-0 justify-between shadow-2xl">
         {/* Track Info */}
         <div className="flex items-center gap-3 min-w-[160px]">
           <img
