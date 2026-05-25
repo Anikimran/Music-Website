@@ -131,14 +131,14 @@ function Navbar() {
           </div>
 
           {/* ================= DESKTOP ICONS ================= */}
-          <div className="hidden md:flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white">
+          <div className="hidden md:flex items-center gap-3 ">
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white hover:cursor-pointer">
               <FiBell size={18} />
             </button>
-            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white">
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white hover:cursor-pointer">
               <IoIosArrowDropdown size={20} />
             </button>
-            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white">
+            <button className="w-10 h-10 rounded-full bg-[#151515] flex items-center justify-center hover:bg-red-500 transition text-gray-400 hover:text-white hover:cursor-pointer">
               <ImUser size={18} color="white" />
             </button>
           </div>
@@ -196,7 +196,7 @@ function Navbar() {
 
       {/* ================= DYNAMIC PREMIUM MODALS ================= */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-20 p-4 overflow-y-autoauto">
+        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-18 p-4 ">
           {/* BACKDROP (ঝাপসা ইফেক্ট ছাড়া ডার্ক ব্যাকগ্রাউন্ড) */}
           <div
             onClick={closeModal}
@@ -222,7 +222,7 @@ function Navbar() {
             </div>
 
             {/* MODAL BODY CONTROLLER */}
-            <div className="p-6 text-white max-h-[80vh] ">
+            <div className="p-4 md:p-6 text-white max-h-[80vh] overflow-y-auto scrollbar-hide ">
               {/* 1. EVENTS MODAL */}
               {activeTab === "events" && (
                 <div className="flex flex-col gap-4">
@@ -258,7 +258,7 @@ function Navbar() {
 
               {/* 2. STORE MODAL */}
               {activeTab === "store" && (
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                   <div className="md:col-span-5 flex flex-col gap-3">
                     <div
                       onClick={() =>
@@ -310,7 +310,7 @@ function Navbar() {
                         />
                       </div>
                       <div>
-                        <h4 className="text-[16px] font-medium ">
+                        <h4 className="text-sm md:text-[16px] font-medium ">
                           Modded iPod Classic-0.5TB
                         </h4>
                         <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">
@@ -481,7 +481,7 @@ function Navbar() {
                       <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Based
                       </span>
-                      <span className="text-xs font-medium text-gray-300 mt-1 block ">
+                      <span className=" text-[12px] md:text-xs font-medium text-gray-300 mt-1 ">
                         SOMEWHERE WITH GOOD
                       </span>
                     </div>
@@ -489,7 +489,7 @@ function Navbar() {
                       <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Email
                       </span>
-                      <span className="text-xs font-medium text-gray-300 mt-1 block break-all">
+                      <span className=" text-[12px] md:text-xs font-medium text-gray-300 mt-1 block break-all">
                         HELLO@CRUCIALTONE.STUDIO
                       </span>
                     </div>

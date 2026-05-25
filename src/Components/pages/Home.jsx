@@ -224,10 +224,12 @@ export default function Home() {
               <div className="flex gap-3 pt-6">
                 <button className="bg-[#e50914] hover:bg-red-700 text-white text-xs font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
                   <FaPlay size={10} />
-                  <p className="font-semibold text-[14px]">PLAY FIRST TRACK</p>
+                  <p className="font-semibold md:text-[14px] text-[12px] whitespace-nowrap">
+                    PLAY FIRST TRACK
+                  </p>
                 </button>
-                <button className="bg-[#3E3F45] hover:bg-gray-700 text-[#FCFCFC] text-[14px] font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
-                  <FaRegBookmark size={18} className="bg-white/50" /> SAVED
+                <button className="bg-[#3E3F45] hover:bg-gray-700 text-[#FCFCFC] md:text-[14px] text-[12px] font-semibold px-5 py-3 rounded-full flex items-center gap-2 transition">
+                  <FaRegBookmark size={18} /> SAVED
                 </button>
               </div>
             </div>
@@ -414,61 +416,149 @@ export default function Home() {
       </div>
 
       {/* FLOAT MUSIC PLAYER BAR */}
-      <div className="absolute z-40 bottom-4 md:bottom-15 left-1/2 -translate-x-1/2 w-[95%] md:w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-2xl md:rounded-full py-3 md:py-2.5 px-3 md:px-4 flex flex-col md:flex-row items-center gap-4 md:gap-0 justify-between shadow-2xl">
-        {/* Track Info */}
-        <div className="flex items-center gap-3 min-w-[160px]">
-          <img
-            src={logo2}
-            alt="Current Track"
-            className="w-9 h-9 rounded-full object-cover animate-spin-slow"
-          />
-          <div>
-            <h4 className="text-xs font-semibold truncate">Shape of You</h4>
-            <p className="text-[10px] text-gray-400 truncate">Ed Sheeran</p>
-          </div>
-        </div>
+      <div className="absolute z-40 bottom-3 md:bottom-15 left-1/2 -translate-x-1/2 w-[95%] md:w-[92%] max-w-4xl bg-black/80 backdrop-blur-md border border-gray-800 rounded-2xl md:rounded-full px-4 py-4 md:py-2.5 md:px-4 shadow-2xl">
+        {/* MOBILE LAYOUT */}
+        <div className="flex flex-col gap-4 md:hidden">
+          {/* Top */}
+          <div className="flex items-center justify-between gap-3">
+            {/* Track Info */}
+            <div className="flex items-center gap-3 min-w-0">
+              <img
+                src={logo2}
+                alt="Current Track"
+                className="w-11 h-11 rounded-full object-cover animate-spin-slow shrink-0"
+              />
 
-        {/* Controls & Progress Bar */}
-        <div className="flex items-center gap-4 flex-1 max-w-md mx-4">
-          <button className="text-gray-400 hover:text-white transition">
-            <AiOutlineBackward size={18} color="white" />
-          </button>
-          <button className="bg-red-600 text-white p-2.5 rounded-full hover:bg-red-700 transition shadow-lg">
-            <FaPlay size={10} />
-          </button>
-          <button className="text-gray-400 hover:text-white transition">
-            <AiOutlineForward size={18} color="white" />
-          </button>
+              <div className="min-w-0">
+                <h4 className="text-sm font-semibold truncate">Shape of You</h4>
 
-          {/* Progress Timeline */}
-          <div className="flex items-center gap-2 flex-1">
-            <div className="relative w-full h-1 bg-gray-700 rounded-full cursor-pointer">
-              <div className="absolute top-0 left-0 h-full w-[40%] bg-red-600 rounded-full"></div>
-              <div className="absolute top-1/2 left-[40%] -translate-y-1/2 w-2.5 h-2.5 bg-white border border-red-600 rounded-full shadow"></div>
+                <p className="text-xs text-gray-400 truncate">Ed Sheeran</p>
+              </div>
             </div>
+
+            {/* Play Controls */}
+            <div className="flex items-center gap-3 shrink-0">
+              <button className="text-gray-400 hover:text-white transition">
+                <AiOutlineBackward size={18} />
+              </button>
+
+              <button className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition shadow-lg">
+                <FaPlay size={10} />
+              </button>
+
+              <button className="text-gray-400 hover:text-white transition">
+                <AiOutlineForward size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* Progress */}
+          <div className="flex items-center gap-2">
             <span className="text-[10px] text-gray-400 whitespace-nowrap">
-              1:45 / 4:42
+              1:45
+            </span>
+
+            <div className="relative flex-1 h-1 bg-gray-700 rounded-full cursor-pointer">
+              <div className="absolute top-0 left-0 h-full w-[40%] bg-red-600 rounded-full"></div>
+
+              <div className="absolute top-1/2 left-[40%] -translate-y-1/2 w-3 h-3 bg-white border border-red-600 rounded-full shadow"></div>
+            </div>
+
+            <span className="text-[10px] text-gray-400 whitespace-nowrap">
+              4:42
             </span>
           </div>
+
+          {/* Bottom Icons */}
+          <div className="flex items-center justify-center gap-5 text-gray-400">
+            <button className="hover:text-white transition">
+              <FaVolumeUp size={15} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaListUl size={14} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaRandom size={14} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaRetweet size={14} />
+            </button>
+
+            <button className="hover:text-red-500 transition">
+              <FaRegHeart size={14} />
+            </button>
+          </div>
         </div>
 
-        {/* Utilities Icons */}
-        <div className="flex items-center gap-3.5 text-gray-400">
-          <button className="hover:text-white transition">
-            <FaVolumeUp size={14} />
-          </button>
-          <button className="hover:text-white transition">
-            <FaListUl size={13} />
-          </button>
-          <button className="hover:text-white transition">
-            <FaRandom size={13} />
-          </button>
-          <button className="hover:text-white transition">
-            <FaRetweet size={13} />
-          </button>
-          <button className="hover:text-red-500 transition">
-            <FaRegHeart size={13} />
-          </button>
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden md:flex items-center gap-4 justify-between">
+          {/* Track Info */}
+          <div className="flex items-center gap-3 min-w-[160px]">
+            <img
+              src={logo2}
+              alt="Current Track"
+              className="w-9 h-9 rounded-full object-cover animate-spin-slow"
+            />
+
+            <div>
+              <h4 className="text-xs font-semibold truncate">Shape of You</h4>
+
+              <p className="text-[10px] text-gray-400 truncate">Ed Sheeran</p>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center gap-4 flex-1 max-w-md mx-4">
+            <button className="text-gray-400 hover:text-white transition">
+              <AiOutlineBackward size={18} color="white" />
+            </button>
+
+            <button className="bg-red-600 text-white p-2.5 rounded-full hover:bg-red-700 transition shadow-lg">
+              <FaPlay size={10} />
+            </button>
+
+            <button className="text-gray-400 hover:text-white transition">
+              <AiOutlineForward size={18} color="white" />
+            </button>
+
+            <div className="flex items-center gap-2 flex-1">
+              <div className="relative w-full h-1 bg-gray-700 rounded-full cursor-pointer">
+                <div className="absolute top-0 left-0 h-full w-[40%] bg-red-600 rounded-full"></div>
+
+                <div className="absolute top-1/2 left-[40%] -translate-y-1/2 w-2.5 h-2.5 bg-white border border-red-600 rounded-full shadow"></div>
+              </div>
+
+              <span className="text-[10px] text-gray-400 whitespace-nowrap">
+                1:45 / 4:42
+              </span>
+            </div>
+          </div>
+
+          {/* Utilities */}
+          <div className="flex items-center gap-3.5 text-gray-400">
+            <button className="hover:text-white transition">
+              <FaVolumeUp size={14} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaListUl size={13} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaRandom size={13} />
+            </button>
+
+            <button className="hover:text-white transition">
+              <FaRetweet size={13} />
+            </button>
+
+            <button className="hover:text-red-500 transition">
+              <FaRegHeart size={13} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
