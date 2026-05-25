@@ -490,7 +490,7 @@ function Navbar() {
                         Email
                       </span>
                       <span className=" text-[12px] md:text-xs font-medium text-gray-300 mt-1 block break-all">
-                        HELLO@CRUCIALTONE.STUDIO
+                        HELLO@CRUCALTONE.com
                       </span>
                     </div>
                     <div>

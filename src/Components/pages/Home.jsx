@@ -202,7 +202,7 @@ export default function Home() {
 
           {/* Hero Section / Latest Release */}
           <div className="bg-[#202125] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center relative overflow-hidden max-w-[1038px] h-auto md:h-[400px] mt-5">
-            <div className=" space-y-2">
+            <div className=" space-y-4">
               <span className=" text-[24px]  text-[#FFFFFF]">Releases</span>
               <p className="text-[14px] font-medium text-[#949494] mt-1">
                 Albums, EPs, and one-offs. Stream below, or jump out{" "}
