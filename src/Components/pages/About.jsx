@@ -1,14 +1,7 @@
-import React from 'react'
-import MyComponent from '../MyComponent'
+import React from "react";
 
 const About = () => {
-  return (
-    <div>
+  return <div>About</div>;
+};
 
-
-      <MyComponent />
-    </div>
-  )
-}
-
-export default About
+export default About;

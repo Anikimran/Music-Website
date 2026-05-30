@@ -270,7 +270,7 @@ function Navbar() {
                           : "border-[#2a2a30]"
                       }`}
                     >
-                      <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 overflow-hidden rounded-2xl">
+                      <div className=" w-20 h-20 shrink-0 overflow-hidden rounded-2xl">
                         <img
                           src={logo12}
                           alt="image"
@@ -476,21 +476,21 @@ function Navbar() {
                     place for people we already know, and people we'd like to.
                   </p>
 
-                  <div className="grid grid-cols-3 gap-6 items-center justify-between pt-6 border-t border-[#26262b] ">
+                  <div className="grid grid-cols-3 gap-10 items-center justify-between pt-6 border-t border-[#26262b] ">
                     <div className="pl-5">
                       <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Based
                       </span>
-                      <span className=" text-[12px] md:text-xs font-medium text-gray-300 mt-1 ">
+                      <span className=" text-[10px] md:text-xs font-medium text-gray-300  ">
                         SOMEWHERE WITH GOOD
                       </span>
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <span className="block text-[10px] uppercase tracking-wider text-[#D9D9D9] font-mono">
                         Email
                       </span>
-                      <span className=" text-[12px] md:text-xs font-medium text-gray-300 mt-1 block break-all">
-                        HELLO@CRUCALTONE.com
+                      <span className=" text-[10px] md:text-xs font-medium text-gray-300  ">
+                        HELLO@CRUCIAL <br className="md:hidden " /> TONE.STUDIO
                       </span>
                     </div>
                     <div>
